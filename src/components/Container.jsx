@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Buttons from './Buttons';
 import Disc from './Disc';
 import Description from './Description';
+import Playlist from './Playlist';
 import { connect } from 'react-refetch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMusic } from '@fortawesome/free-solid-svg-icons'
@@ -50,6 +51,7 @@ const Container = (props) => {
             <Disc />
             <Description data={data[selectedTrack]} currentTime={currentTime}/>
             <Buttons currentTime={currentTime} setTime={setTime} selectTrack={selectTrack} selectedTrack={selectedTrack} tracksLength={data?.length ?? 1} start={start} isPlaying={isPlaying}/>
+            <Playlist selectTrack={selectTrack} selectedTrack={selectedTrack} tracks={data} />
         </StyledContainer>
     )
 };
