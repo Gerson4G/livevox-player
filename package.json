@@ -12,6 +12,7 @@
     "add": "^2.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-pose": "^4.0.10",
     "react-refetch": "^3.0.1",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.1",
