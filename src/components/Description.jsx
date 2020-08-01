@@ -8,7 +8,6 @@ const Description = () => (
     <DescriptionContainer>
         <div>name</div>
         <div>Artist</div>
-        <div>time</div>
         <ProgressBar />
     </DescriptionContainer>
 );

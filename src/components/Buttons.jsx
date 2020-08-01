@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const ButtonsContainer = styled.div`
     color: blue;
+    align-self: center;
 `;
 
 const Buttons = () => (

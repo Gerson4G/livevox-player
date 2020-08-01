@@ -8,6 +8,8 @@ const StyledDisc = styled.div`
     background-color: red;
     height: ${radius};
     width: ${radius};
+    align-self: flex-start;
+    margin-top: -1em;
 `;
 
 const Disc = () => <StyledDisc/>;
