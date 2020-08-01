@@ -12,12 +12,30 @@ const StyledDisc = styled.div`
     width: ${radius};
     align-self: flex-start;
     margin-top: -1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @keyframes rotating {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+    }
+
+    .disc-image {
+        height: 90%;
+        width: auto;
+        ${({isPlaying}) =>isPlaying && 'animation: rotating 2s linear infinite;' }
+    }
 `;
 
-const Disc = () => {
+const Disc = ({isPlaying}) => {
     return(
-        <StyledDisc>
-            <FontAwesomeIcon icon={faCompactDisc} />
+        <StyledDisc isPlaying={isPlaying}>
+            <FontAwesomeIcon className="disc-image" icon={faCompactDisc} />
         </StyledDisc>
     )
 };
