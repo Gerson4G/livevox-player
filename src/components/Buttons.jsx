@@ -10,7 +10,7 @@ const ButtonsContainer = styled.div`
 `;
 
 const Buttons = (props) => {
-    const {selectedTrack, selectTrack, tracksLength, isPlaying, start, currentTime, setTime} = props;
+    const {selectedTrack, selectTrack, tracksLength, isPlaying, start, currentTime, setTime, duration} = props;
 
     const changeTrack = (dir) => {
         if(dir === 'next' && selectedTrack < tracksLength - 1){
@@ -23,11 +23,21 @@ const Buttons = (props) => {
 
     useEffect(() => {
         let timer = null;
-        if (isPlaying) {
+        if(isPlaying && currentTime >= duration && selectedTrack < tracksLength - 1){
+          setTime(0);
+          selectTrack(selectedTrack+1);
+        }
+        else if(isPlaying && currentTime >= duration && selectedTrack === tracksLength - 1){
+          setTime(0);
+          clearInterval(timer);
+          start(false);
+        }
+        else if (isPlaying) {
           timer = setInterval(() => {
             setTime(currentTime => currentTime + 1);
           }, 1000);
-        } else if (!isPlaying && currentTime !== 0) {
+        }
+        else if (!isPlaying && currentTime !== 0) {
           clearInterval(timer);
         }
         return () => clearInterval(timer);

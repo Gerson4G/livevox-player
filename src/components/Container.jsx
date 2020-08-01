@@ -51,7 +51,7 @@ const Container = (props) => {
         <StyledContainer>
             <Disc isPlaying={isPlaying}/>
             <Description data={data[selectedTrack]} currentTime={currentTime} setTime={setTime}/>
-            <Buttons currentTime={currentTime} setTime={setTime} selectTrack={selectTrack} selectedTrack={selectedTrack} tracksLength={data?.length ?? 1} start={start} isPlaying={isPlaying}/>
+            <Buttons duration={data[selectedTrack]?.duration ?? 0} currentTime={currentTime} setTime={setTime} selectTrack={selectTrack} selectedTrack={selectedTrack} tracksLength={data?.length ?? 1} start={start} isPlaying={isPlaying}/>
             <Playlist selectTrack={selectTrack} selectedTrack={selectedTrack} tracks={data} />
         </StyledContainer>
     )
