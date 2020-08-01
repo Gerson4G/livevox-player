@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import Buttons from './Buttons';
 import Disc from './Disc';
 import Description from './Description';
-import { connect, PromiseState } from 'react-refetch'
+import { connect } from 'react-refetch'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMusic } from '@fortawesome/free-solid-svg-icons'
 
 const StyledContainer = styled.div`
     display: flex;
@@ -20,7 +22,7 @@ const Container = (props) => {
     const [selectedTrack, selectTrack] = useState(0);
 
     if(tracksFetch.pending){
-        return <>'Loading'</>
+        return <FontAwesomeIcon icon={faMusic} />
     }
 
     return(

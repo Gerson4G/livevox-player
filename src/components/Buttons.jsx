@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faForward, faBackward, faPlay } from '@fortawesome/free-solid-svg-icons'
 
 const ButtonsContainer = styled.div`
     color: blue;
@@ -8,9 +10,9 @@ const ButtonsContainer = styled.div`
 
 const Buttons = () => (
     <ButtonsContainer>
-        <i>{`<`}</i>
-        <i>Play</i>
-        <i>{`>`}</i>
+        <FontAwesomeIcon icon={faBackward} />
+        <FontAwesomeIcon icon={faPlay} />
+        <FontAwesomeIcon icon={faForward} />
     </ButtonsContainer>
 );
 
