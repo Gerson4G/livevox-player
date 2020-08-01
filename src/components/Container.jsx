@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Buttons from './Buttons';
 import Disc from './Disc';
@@ -6,6 +6,7 @@ import Description from './Description';
 import { connect } from 'react-refetch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMusic } from '@fortawesome/free-solid-svg-icons'
+import {mock} from '../data.js';
 
 const StyledContainer = styled.div`
     display: flex;
@@ -23,15 +24,32 @@ const Container = (props) => {
     const [currentTime, setTime] = useState(0);
     const [ isPlaying, start ] = useState(false);
 
+
+    useEffect(() => {
+        setTime(0)
+    }, [selectedTrack])
+
+    useEffect(() => {
+        let { value } = tracksFetch;
+        if(!value){
+            value = mock;
+        }
+        if(value && currentTime === value[selectedTrack]?.duration && selectedTrack < value.length - 1 ){
+            selectTrack(selectTrack + 1);
+        }
+    }, [currentTime])
+
     if(tracksFetch.pending){
         return <FontAwesomeIcon icon={faMusic} />
     }
+    
+    const data = tracksFetch.rejected ? mock : tracksFetch.value;
 
     return(
         <StyledContainer>
             <Disc />
-            <Description data={tracksFetch.value[selectedTrack]} currentTime={currentTime}/>
-            <Buttons currentTime={currentTime} setTime={setTime} selectTrack={selectTrack} selectedTrack={selectedTrack} tracksLength={tracksFetch.value?.length ?? 1} start={start} isPlaying={isPlaying}/>
+            <Description data={data[selectedTrack]} currentTime={currentTime}/>
+            <Buttons currentTime={currentTime} setTime={setTime} selectTrack={selectTrack} selectedTrack={selectedTrack} tracksLength={data?.length ?? 1} start={start} isPlaying={isPlaying}/>
         </StyledContainer>
     )
 };

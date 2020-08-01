@@ -12,15 +12,17 @@ const Bar = styled.div`
 `;
 
 const formatTime = (time) => {
-    const [,m , s] = time.split(':');
-    return [m, s].join(':');
+    let date = new Date(0);
+    date.setSeconds(time);
+    let timeString = date.toISOString().substr(15, 4);
+    return timeString;
 }
 
 const ProgressBar = (props) => {
     const { duration, currentTime } = props;
     return(
         <Container>
-            <Time>{currentTime}</Time>
+            <Time>{formatTime(currentTime)}</Time>
             <Time>{formatTime(duration)}</Time>
             <Bar />
         </Container>

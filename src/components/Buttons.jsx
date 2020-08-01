@@ -32,6 +32,7 @@ const Buttons = (props) => {
         }
         return () => clearInterval(timer);
       }, [isPlaying, currentTime]);
+      
 
     return(
         <ButtonsContainer>
