@@ -4,12 +4,15 @@ import ProgressBar from './ProgressBar';
 
 const DescriptionContainer = styled.div``;
 
-const Description = () => (
-    <DescriptionContainer>
-        <div>name</div>
-        <div>Artist</div>
-        <ProgressBar />
-    </DescriptionContainer>
-);
+const Description = (props) => {
+    const { data: {name, artist, duration} } = props;
+    return(
+        <DescriptionContainer>
+            <div>Song name: {name}</div>
+            <div>Artist: {artist}</div>
+            <ProgressBar duration={duration}/>
+        </DescriptionContainer>
+    )
+};
 
 export default Description;

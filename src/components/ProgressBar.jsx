@@ -11,12 +11,20 @@ const Bar = styled.div`
     background: gray;
 `;
 
-const ProgressBar = (props) => (
-    <Container>
-        <Time>Current Time</Time>
-        <Time>End Time</Time>
-        <Bar />
-    </Container>
-)
+const formatTime = (time) => {
+    const [,m , s] = time.split(':');
+    return [m, s].join(':');
+}
+
+const ProgressBar = (props) => {
+    const { duration } = props;
+    return(
+        <Container>
+            <Time>Current Time</Time>
+            <Time>{formatTime(duration)}</Time>
+            <Bar />
+        </Container>
+    )
+}
 
 export default ProgressBar;
