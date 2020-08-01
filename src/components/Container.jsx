@@ -49,7 +49,7 @@ const Container = (props) => {
     return(
         <StyledContainer>
             <Disc />
-            <Description data={data[selectedTrack]} currentTime={currentTime}/>
+            <Description data={data[selectedTrack]} currentTime={currentTime} setTime={setTime}/>
             <Buttons currentTime={currentTime} setTime={setTime} selectTrack={selectTrack} selectedTrack={selectedTrack} tracksLength={data?.length ?? 1} start={start} isPlaying={isPlaying}/>
             <Playlist selectTrack={selectTrack} selectedTrack={selectedTrack} tracks={data} />
         </StyledContainer>

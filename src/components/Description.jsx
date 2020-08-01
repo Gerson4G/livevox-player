@@ -5,12 +5,12 @@ import ProgressBar from './ProgressBar';
 const DescriptionContainer = styled.div``;
 
 const Description = (props) => {
-    const { data: {name, artist, duration}, currentTime} = props;
+    const { data: {name, artist, duration}, currentTime, setTime} = props;
     return(
         <DescriptionContainer>
             <div>Song name: {name}</div>
             <div>Artist: {artist}</div>
-            <ProgressBar duration={duration} currentTime={currentTime}/>
+            <ProgressBar setTime={setTime} duration={duration} currentTime={currentTime}/>
         </DescriptionContainer>
     )
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div``;
@@ -7,7 +7,7 @@ const Time = styled.span``;
 
 const Bar = styled.div`
     width: 80%;
-    height: 5px;
+    height: 10px;
     background: gray;
 `;
 
@@ -19,12 +19,23 @@ const formatTime = (time) => {
 }
 
 const ProgressBar = (props) => {
-    const { duration, currentTime } = props;
+    const barElement = useRef(null);
+    const { duration, currentTime, setTime } = props;
+
+    const selectTime = ({nativeEvent: {offsetX}}) => {
+        const percentage = (offsetX * 100) / barElement.current.clientWidth;
+        let time = (percentage * duration) / 100;
+        if(time === duration){
+            time =- 1;
+        }
+        setTime(time);
+    }
+
     return(
         <Container>
             <Time>{formatTime(currentTime)}</Time>
             <Time>{formatTime(duration)}</Time>
-            <Bar />
+            <div><Bar ref={barElement} onClick={selectTime} /></div>
         </Container>
     )
 }
