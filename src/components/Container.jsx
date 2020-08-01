@@ -10,6 +10,7 @@ import { faMusic } from '@fortawesome/free-solid-svg-icons'
 import {mock} from '../data.js';
 
 const StyledContainer = styled.div`
+    font-family: 'Merienda', cursive;
     display: flex;
     margin: auto;
     justify-content: space-evenly;
