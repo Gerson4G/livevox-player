@@ -48,7 +48,7 @@ const Container = (props) => {
 
     return(
         <StyledContainer>
-            <Disc />
+            <Disc isPlaying={isPlaying}/>
             <Description data={data[selectedTrack]} currentTime={currentTime} setTime={setTime}/>
             <Buttons currentTime={currentTime} setTime={setTime} selectTrack={selectTrack} selectedTrack={selectedTrack} tracksLength={data?.length ?? 1} start={start} isPlaying={isPlaying}/>
             <Playlist selectTrack={selectTrack} selectedTrack={selectedTrack} tracks={data} />
@@ -57,5 +57,5 @@ const Container = (props) => {
 };
 
 export default connect(() => ({
-    tracksFetch: `https://app.fakejson.com/q/SkPzE8AU?token=DLq16Ek6ilC7Ue3sXfpELA`,
+    tracksFetch: 'localhost:5000'//`https://app.fakejson.com/q/SkPzE8AU?token=DLq16Ek6ilC7Ue3sXfpELA`,
   }))(Container);
