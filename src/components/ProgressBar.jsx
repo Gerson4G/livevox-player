@@ -17,10 +17,10 @@ const formatTime = (time) => {
 }
 
 const ProgressBar = (props) => {
-    const { duration } = props;
+    const { duration, currentTime } = props;
     return(
         <Container>
-            <Time>Current Time</Time>
+            <Time>{currentTime}</Time>
             <Time>{formatTime(duration)}</Time>
             <Bar />
         </Container>

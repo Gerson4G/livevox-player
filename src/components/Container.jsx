@@ -20,6 +20,8 @@ const StyledContainer = styled.div`
 const Container = (props) => {
     const { tracksFetch } = props;
     const [selectedTrack, selectTrack] = useState(0);
+    const [currentTime, setTime] = useState(0);
+    const [ isPlaying, start ] = useState(false);
 
     if(tracksFetch.pending){
         return <FontAwesomeIcon icon={faMusic} />
@@ -28,8 +30,8 @@ const Container = (props) => {
     return(
         <StyledContainer>
             <Disc />
-            <Description data={tracksFetch.value[selectedTrack]}/>
-            <Buttons/>
+            <Description data={tracksFetch.value[selectedTrack]} currentTime={currentTime}/>
+            <Buttons currentTime={currentTime} setTime={setTime} selectTrack={selectTrack} selectedTrack={selectedTrack} tracksLength={tracksFetch.value?.length ?? 1} start={start} isPlaying={isPlaying}/>
         </StyledContainer>
     )
 };
