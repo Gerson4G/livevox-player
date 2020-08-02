@@ -13,11 +13,22 @@ const StyledContainer = styled.div`
     font-family: 'Merienda', cursive;
     display: flex;
     margin: auto;
-    justify-content: space-evenly;
+    justify-content: space-between;
     background-color: white;
-    width: 80%;
+    width: 70%;
     height: 6em;
     box-shadow: rgb(101, 101, 101) 0px 30px 80px 0px;
+    padding: 0 15px;
+
+    .left-item {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    & > :first-child, & > :last-child {
+        width: 25%;
+    }
+ 
 `;
 
 const Container = (props) => {
@@ -49,10 +60,12 @@ const Container = (props) => {
 
     return(
         <StyledContainer>
-            <Disc isPlaying={isPlaying}/>
+            <div className="left-item">
+                <Disc isPlaying={isPlaying}/>
+                <Playlist selectTrack={selectTrack} selectedTrack={selectedTrack} tracks={data} />
+            </div>
             <Description data={data[selectedTrack]} currentTime={currentTime} setTime={setTime}/>
             <Buttons duration={data[selectedTrack]?.duration ?? 0} currentTime={currentTime} setTime={setTime} selectTrack={selectTrack} selectedTrack={selectedTrack} tracksLength={data?.length ?? 1} start={start} isPlaying={isPlaying}/>
-            <Playlist selectTrack={selectTrack} selectedTrack={selectedTrack} tracks={data} />
         </StyledContainer>
     )
 };
