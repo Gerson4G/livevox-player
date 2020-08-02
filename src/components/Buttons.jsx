@@ -6,6 +6,8 @@ import { faForward, faBackward, faPlay, faPause } from '@fortawesome/free-solid-
 const ButtonsContainer = styled.div`
     color: black;
     align-self: center;
+    display: flex;
+    justify-content: center;
     > * {
       cursor: pointer;
     }
@@ -16,8 +18,8 @@ const ButtonsContainer = styled.div`
     }
 
     .play {
-      font-size: 26pt;
-      vertical-algin: sub;
+      font-size: 23pt;
+      align-self: center;
     }
 
     .fa-forward {
