@@ -49,14 +49,12 @@ const Loading = styled.div`
 
     @keyframes loader {
         from {
-        
-        opacity: 1;
-        transform: translate3d(0);
+            opacity: 1;
+            transform: translate3d(0);
         }
         to {
-        
-        opacity: 0.1;
-        transform: translate3d(0, -1rem, 0);
+            opacity: 0.1;
+            transform: translate3d(0, -1rem, 0);
         }
     }
 `;
