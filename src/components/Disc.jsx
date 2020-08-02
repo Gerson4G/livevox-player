@@ -11,7 +11,6 @@ const StyledDisc = styled.div`
     height: ${radius};
     width: ${radius};
     align-self: flex-start;
-    margin-top: -1em;
     display: flex;
     align-items: center;
     justify-content: center;
