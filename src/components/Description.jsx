@@ -14,9 +14,9 @@ const Info = styled.div`
     padding: 10px;
     margin-top: -80px;
     background: green;
-    width: 70vw;
+    width: 65%;
     position: absolute;
-    left: 15%;
+    left: 17%;
     visibility: ${({isOpen}) => isOpen ? 'visible' : 'hidden'};
     opacity: ${({isOpen}) => isOpen ? '1' : '0'};
     transform: ${({isOpen}) => isOpen ? 'translateY(-45%)' : 'translateY(0)'};

@@ -3,33 +3,49 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faList, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
-import posed from 'react-pose';
+import posed, { PoseGroup } from 'react-pose';
 
 const Container = styled.div`
-    i {
-        cursor: pointer;
+    width: 70%;
+    margin-left: 1em;
+    margin-top: 1em;
+    position: relative;
+    h4 {
+        margin: 2px;
     }
     .playing {
         color: blue;
     }
-    .icon-open, .close  {
+    .icon-open {
         font-size: 30pt;
+    }
+    .icon-open svg, .close {
         cursor: pointer;
     }
     .track-list .track {
         cursor: pointer;
     }
+    .close {
+        position: absolute;
+        right: 0;
+        font-size: 20pt;
+        top: 0;
+    }
+
+    .track-list {
+        height: auto;
+    }
 `;
 
 const List = posed.div({
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 }
-});
-
-const Icon = posed.span({
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 }
-});
+    enter: { scale: 1 },
+    exit: { scale: 0 },
+  });
+  
+  const Icon = posed.div({
+    enter: { scale: 1 },
+    exit: { scale: 0 },
+  });
 
 const ProgressBar = (props) => {
     const { tracks, selectTrack, selectedTrack } = props;
@@ -38,10 +54,15 @@ const ProgressBar = (props) => {
 
     return(
         <Container>
-                <Icon className="icon-open" pose={!isOpen ? 'visible' : 'hidden'}>
+            <PoseGroup>
+            {
+                !isOpen ?
+                <Icon key={1} className="icon-open">
                     <FontAwesomeIcon onClick={() => {open(true)}}  icon={faList} />
                 </Icon>
-                <List className="track-list" pose={isOpen ? 'visible' : 'hidden'}>
+                :
+                <List key={2} className="track-list"s>
+                    <h4>Playlist</h4>
                     <FontAwesomeIcon className="close" onClick={() => {open(false)}}  icon={faTimes} />
                     {
                         tracks.map( (track, i) => 
@@ -49,6 +70,8 @@ const ProgressBar = (props) => {
                         )
                     }
                 </List>
+            }
+            </PoseGroup>
         </Container>
     )
 }
