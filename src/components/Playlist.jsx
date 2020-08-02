@@ -12,7 +12,13 @@ const Container = styled.div`
     .playing {
         color: blue;
     }
-
+    .icon-open, .close  {
+        font-size: 30pt;
+        cursor: pointer;
+    }
+    .track-list .track {
+        cursor: pointer;
+    }
 `;
 
 const List = posed.div({
@@ -32,14 +38,14 @@ const ProgressBar = (props) => {
 
     return(
         <Container>
-                <Icon pose={!isOpen ? 'visible' : 'hidden'}>
+                <Icon className="icon-open" pose={!isOpen ? 'visible' : 'hidden'}>
                     <FontAwesomeIcon onClick={() => {open(true)}}  icon={faList} />
                 </Icon>
-                <List pose={isOpen ? 'visible' : 'hidden'}>
-                    <FontAwesomeIcon onClick={() => {open(false)}}  icon={faTimes} />
+                <List className="track-list" pose={isOpen ? 'visible' : 'hidden'}>
+                    <FontAwesomeIcon className="close" onClick={() => {open(false)}}  icon={faTimes} />
                     {
                         tracks.map( (track, i) => 
-                            <div key={track.id} onClick={() => selectTrack(i)} className={i === selectedTrack ? 'playing' : ''}>{i+1} - {track.name}</div>
+                            <div key={track.id} onClick={() => selectTrack(i)} className={`track ${i === selectedTrack ? 'playing' : ''}`}>{i+1} - {track.name}</div>
                         )
                     }
                 </List>

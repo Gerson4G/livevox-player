@@ -4,9 +4,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faForward, faBackward, faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
 
 const ButtonsContainer = styled.div`
-    color: blue;
+    color: black;
     align-self: center;
     cursor: pointer;
+
+    svg {
+      margin: 0 2px;
+      font-size: 30pt;
+    }
+
+    .play {
+      font-size: 26pt;
+      vertical-algin: sub;
+    }
+
+    .fa-forward {
+      ${({isLastTrack}) => isLastTrack && 'cursor: not-allowed;'}
+    }
+    .fa-backward {
+      ${({isFirstTrack}) => isFirstTrack && 'cursor: not-allowed;'}
+    }
 `;
 
 const Buttons = (props) => {
@@ -45,9 +62,9 @@ const Buttons = (props) => {
       
 
     return(
-        <ButtonsContainer>
+        <ButtonsContainer isFirstTrack={selectedTrack === 0} isLastTrack={selectedTrack === tracksLength - 1}>
             <FontAwesomeIcon onClick={() => changeTrack('prev')} icon={faBackward} />
-            <FontAwesomeIcon onClick={() => start(!isPlaying)} icon={isPlaying ? faPause : faPlay} />
+            <FontAwesomeIcon  className="play" onClick={() => start(!isPlaying)} icon={isPlaying ? faPause : faPlay} />
             <FontAwesomeIcon onClick={() => changeTrack('next')} icon={faForward} />
         </ButtonsContainer>
     );
