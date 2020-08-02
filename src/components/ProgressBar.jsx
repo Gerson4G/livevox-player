@@ -1,5 +1,7 @@
 import React, {useRef, useEffect} from 'react';
 import styled from 'styled-components';
+import Popover from 'react-tiny-popover'
+import { useState } from 'react';
 
 const height = '10';
 
@@ -30,6 +32,9 @@ const formatTime = (time) => {
 const ProgressBar = (props) => {
     const barElement = useRef(null);
     const { duration, currentTime, setTime, audio } = props;
+    const [isPopoverOpen, openPopover] = useState(false);
+    const [popoverContent, setPopoverContent] = useState('');
+    const [popoverPos, setPopooverPos] = useState({});
 
     const getProgress = () => {
         let progress = 0;
@@ -39,9 +44,13 @@ const ProgressBar = (props) => {
         return progress;
     }
 
+    const getTime = (position, width) => {
+        const percentage = (position * 100) / width;
+        return (percentage * duration) / 100;
+    }
+
     const selectTime = ({nativeEvent: {offsetX}}) => {
-        const percentage = (offsetX * 100) / barElement.current.clientWidth;
-        let time = (percentage * duration) / 100;
+        let time = getTime(offsetX, barElement.current.clientWidth);
         if(time === duration){
             time =- 1;
         }
@@ -49,11 +58,25 @@ const ProgressBar = (props) => {
         setTime(time);
     }
 
+    const showPopover = ({nativeEvent: {offsetX}, clientX, clientY}) => {
+        setPopoverContent( formatTime(getTime(offsetX, barElement.current.clientWidth)) );
+        setPopooverPos({left: clientX, top: clientY - 30})
+        openPopover(true)
+    }
+
     return(
         <Container>
             <Time>{formatTime(currentTime)}</Time>
             <Time>{formatTime(duration)}</Time>
-            <div><BarContainer ref={barElement} onClick={selectTime}><Bar progress={getProgress()}/></BarContainer></div>
+            <Popover
+                isOpen={isPopoverOpen}
+                position={'top'}
+                content={<div>{popoverContent}</div>}
+                contentLocation={popoverPos}
+                disableReposition
+            >
+                <div><BarContainer onMouseMove={showPopover} onMouseLeave={() => openPopover(false)} onMouseOver={showPopover} ref={barElement} onClick={selectTime}><Bar progress={getProgress()}/></BarContainer></div>
+            </Popover>
         </Container>
     )
 }
