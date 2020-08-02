@@ -6,7 +6,9 @@ import { faForward, faBackward, faPlay, faPause } from '@fortawesome/free-solid-
 const ButtonsContainer = styled.div`
     color: black;
     align-self: center;
-    cursor: pointer;
+    > * {
+      cursor: pointer;
+    }
 
     svg {
       margin: 0 4px;
