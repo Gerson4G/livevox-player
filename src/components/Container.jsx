@@ -31,8 +31,40 @@ const StyledContainer = styled.div`
  
 `;
 
+const Loading = styled.div`
+    
+    margin: auto;
+    & > * {    
+        font-size: 40pt;
+        animation: loader 0.6s infinite alternate;
+        margin: 10px;
+    }
+    > :nth-child(2) {
+        animation-delay: 0.4s;
+    }
+
+    > :nth-child(3) {
+        animation-delay: 0.8s;
+    }
+
+    @keyframes loader {
+        from {
+        
+        opacity: 1;
+        transform: translate3d(0);
+        }
+        to {
+        
+        opacity: 0.1;
+        transform: translate3d(0, -1rem, 0);
+        }
+    }
+`;
+
+
 const audio = new Audio();
 audio.loop = false;
+
 
 const Container = (props) => {
     const { tracksFetch } = props;
@@ -45,7 +77,7 @@ const Container = (props) => {
     useEffect(() => {
         setTime(0);
         audio.currentTime = 0;
-    }, [selectedTrack])
+    }, [selectedTrack]);
 
     useEffect(() => {
         let { value } = tracksFetch;
@@ -55,10 +87,16 @@ const Container = (props) => {
         if(value && currentTime === value[selectedTrack]?.duration && selectedTrack < value.length - 1 ){
             selectTrack(selectTrack + 1);
         }
-    }, [currentTime])
+    }, [currentTime]);
 
     if(tracksFetch.pending){
-        return <FontAwesomeIcon icon={faMusic} />
+        return (
+            <Loading>
+                <FontAwesomeIcon icon={faMusic} />
+                <FontAwesomeIcon icon={faMusic} />
+                <FontAwesomeIcon icon={faMusic} />
+            </Loading>
+        )
     }
     
     return(
