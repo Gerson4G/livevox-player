@@ -15,6 +15,7 @@
     "react-pose": "^4.0.10",
     "react-refetch": "^3.0.1",
     "react-scripts": "3.4.1",
+    "react-tiny-popover": "^5.1.0",
     "styled-components": "^5.1.1",
     "yarn": "^1.22.4"
   },
