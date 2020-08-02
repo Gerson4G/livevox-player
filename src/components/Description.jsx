@@ -25,7 +25,7 @@ const Info = styled.div`
 `;
 
 const Description = (props) => {
-    const { data: {name, artist, duration}, currentTime, setTime} = props;
+    const { data: {name, artist, duration}, currentTime, setTime, audio} = props;
     const [isOpen, open] = useState(false);
 
     return(
@@ -34,7 +34,7 @@ const Description = (props) => {
             <Info isOpen={isOpen}>
                 <div>Song name: {name}</div>
                 <div>Artist: {artist}</div>
-                <ProgressBar setTime={setTime} duration={duration} currentTime={currentTime}/>
+                <ProgressBar audio={audio} setTime={setTime} duration={duration} currentTime={currentTime}/>
             </Info>
         </DescriptionContainer>
     )

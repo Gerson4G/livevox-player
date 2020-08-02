@@ -31,15 +31,20 @@ const StyledContainer = styled.div`
  
 `;
 
+const audio = new Audio();
+audio.loop = false;
+
 const Container = (props) => {
     const { tracksFetch } = props;
     const [selectedTrack, selectTrack] = useState(0);
     const [currentTime, setTime] = useState(0);
     const [ isPlaying, start ] = useState(false);
 
+    const data = tracksFetch.rejected ? mock : tracksFetch.value;
 
     useEffect(() => {
-        setTime(0)
+        setTime(0);
+        audio.currentTime = 0;
     }, [selectedTrack])
 
     useEffect(() => {
@@ -56,16 +61,14 @@ const Container = (props) => {
         return <FontAwesomeIcon icon={faMusic} />
     }
     
-    const data = tracksFetch.rejected ? mock : tracksFetch.value;
-
     return(
         <StyledContainer>
             <div className="left-item">
                 <Disc isPlaying={isPlaying}/>
                 <Playlist selectTrack={selectTrack} selectedTrack={selectedTrack} tracks={data} />
             </div>
-            <Description data={data[selectedTrack]} currentTime={currentTime} setTime={setTime}/>
-            <Buttons duration={data[selectedTrack]?.duration ?? 0} currentTime={currentTime} setTime={setTime} selectTrack={selectTrack} selectedTrack={selectedTrack} tracksLength={data?.length ?? 1} start={start} isPlaying={isPlaying}/>
+            <Description audio={audio} data={data[selectedTrack]} currentTime={currentTime} setTime={setTime}/>
+            <Buttons audio={audio} music={data[selectedTrack]?.music} duration={data[selectedTrack]?.duration ?? 0} currentTime={currentTime} setTime={setTime} selectTrack={selectTrack} selectedTrack={selectedTrack} tracksLength={data?.length ?? 1} start={start} isPlaying={isPlaying}/>
         </StyledContainer>
     )
 };

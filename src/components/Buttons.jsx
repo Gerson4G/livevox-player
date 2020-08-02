@@ -27,7 +27,7 @@ const ButtonsContainer = styled.div`
 `;
 
 const Buttons = (props) => {
-    const {selectedTrack, selectTrack, tracksLength, isPlaying, start, currentTime, setTime, duration} = props;
+    const {selectedTrack, selectTrack, tracksLength, isPlaying, start, currentTime, setTime, duration, music, audio} = props;
 
     const changeTrack = (dir) => {
         if(dir === 'next' && selectedTrack < tracksLength - 1){
@@ -38,14 +38,21 @@ const Buttons = (props) => {
         }
     }
 
+
+    useEffect(() => {
+      audio.src = music;
+    }, [music])
+
     useEffect(() => {
         let timer = null;
         if(isPlaying && currentTime >= duration && selectedTrack < tracksLength - 1){
           setTime(0);
+          audio.currentTime = 0;
           selectTrack(selectedTrack+1);
         }
         else if(isPlaying && currentTime >= duration && selectedTrack === tracksLength - 1){
           setTime(0);
+          audio.currentTime = 0;
           clearInterval(timer);
           start(false);
         }
@@ -60,11 +67,20 @@ const Buttons = (props) => {
         return () => clearInterval(timer);
       }, [isPlaying, currentTime]);
       
+    const playStop = () => {
+      if(isPlaying){
+        audio.pause();  
+      }
+      else{
+        audio.play();
+      }
+      start(!isPlaying);
+    }
 
     return(
         <ButtonsContainer isFirstTrack={selectedTrack === 0} isLastTrack={selectedTrack === tracksLength - 1}>
             <FontAwesomeIcon onClick={() => changeTrack('prev')} icon={faBackward} />
-            <FontAwesomeIcon  className="play" onClick={() => start(!isPlaying)} icon={isPlaying ? faPause : faPlay} />
+            <FontAwesomeIcon  className="play" onClick={playStop} icon={isPlaying ? faPause : faPlay} />
             <FontAwesomeIcon onClick={() => changeTrack('next')} icon={faForward} />
         </ButtonsContainer>
     );

@@ -29,7 +29,7 @@ const formatTime = (time) => {
 
 const ProgressBar = (props) => {
     const barElement = useRef(null);
-    const { duration, currentTime, setTime } = props;
+    const { duration, currentTime, setTime, audio } = props;
 
     const getProgress = () => {
         let progress = 0;
@@ -45,6 +45,7 @@ const ProgressBar = (props) => {
         if(time === duration){
             time =- 1;
         }
+        audio.currentTime = time;
         setTime(time);
     }
 
