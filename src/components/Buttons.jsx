@@ -9,7 +9,7 @@ const ButtonsContainer = styled.div`
     cursor: pointer;
 
     svg {
-      margin: 0 2px;
+      margin: 0 4px;
       font-size: 30pt;
     }
 
