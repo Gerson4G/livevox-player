@@ -21,11 +21,21 @@ const Container = styled.div`
     }
     .icon-open {
         font-size: 30pt;
+        display: flex;
+        flex-direction: column;
+        h4 {
+            margin: auto;
+            font-size: 14pt;
+        }
+        svg {
+            align-self: center;
+        }
     }
     .icon-open svg, .close {
         cursor: pointer;
         color: ${palette.action};
     }
+
     .track-list .track {
         cursor: pointer;
         overflow: hidden;
@@ -74,6 +84,7 @@ const ProgressBar = (props) => {
             {
                 !isOpen ?
                 <Icon key={1} className="icon-open">
+                    <h4>Playlist</h4>
                     <FontAwesomeIcon onClick={() => {open(true)}}  icon={faList} />
                 </Icon>
                 :
