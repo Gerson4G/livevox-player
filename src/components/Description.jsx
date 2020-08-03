@@ -5,6 +5,7 @@ import ProgressBar from './ProgressBar';
 const DescriptionContainer = styled.div`
     display: flex;
     align-items: center;
+
     span:first-child {
         cursor: pointer;
     }
