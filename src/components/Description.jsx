@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import ProgressBar from './ProgressBar';
+import palette from '../constants';
 
 const DescriptionContainer = styled.div`
     display: flex;
@@ -14,7 +15,7 @@ const DescriptionContainer = styled.div`
 const Info = styled.div`
     display: block;
     text-align: center;
-    background: #e1e1e1;
+    background: ${palette.main};
     padding: 10px;
     margin-top: -80px;
     width: 65%;

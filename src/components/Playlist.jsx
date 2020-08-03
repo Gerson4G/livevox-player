@@ -42,6 +42,7 @@ const Container = styled.div`
         width: 130%;
         white-space: nowrap;
         overflow: hidden;
+        background: ${palette.main};
     }
 `;
 

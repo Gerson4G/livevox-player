@@ -15,7 +15,7 @@ const StyledContainer = styled.div`
     display: flex;
     margin: auto;
     justify-content: space-between;
-    background-color: #e1e1e1;
+    background-color: ${palette.main};
     width: 70%;
     height: 6em;
     box-shadow: rgb(101, 101, 101) 0px 30px 80px 0px;
