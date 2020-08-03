@@ -68,7 +68,7 @@ const ProgressBar = (props) => {
 
     const showPopover = ({nativeEvent: {offsetX}, clientX, clientY}) => {
         setPopoverContent( formatTime(getTime(offsetX, barElement.current.clientWidth)) );
-        setPopooverPos({left: clientX, top: clientY - 35})
+        setPopooverPos({left: clientX, top: clientY + 10})
         openPopover(true)
     }
 

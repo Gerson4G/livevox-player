@@ -34,6 +34,8 @@ const StyledDisc = styled.div`
     .disc-image, img {
         height: 90%;
         width: auto;
+        border: 2px solid ${palette.lightPasive};
+        border-radius: ${radius}em;
         color: ${palette.action};
         ${({isPlaying}) => isPlaying && 'animation: rotating 4s linear infinite;'}
     }

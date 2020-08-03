@@ -19,8 +19,9 @@ const StyledContainer = styled.div`
     width: 70%;
     height: 10em;
     border-radius: 10px;
-    box-shadow: rgb(101, 101, 101) 0px 30px 80px 0px;
+    box-shadow: rgb(101, 101, 101) 0px 1px 60px 0px;
     padding: 0 15px;
+    border: 2px solid ${palette.action};
 
     .left-item {
         display: flex;
@@ -34,7 +35,7 @@ const StyledContainer = styled.div`
 `;
 
 const Loading = styled.div`
-    color: ${palette.action}
+    color: ${palette.action};
     margin: auto;
     & > * {    
         font-size: 40pt;
