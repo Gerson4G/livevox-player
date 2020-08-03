@@ -27,6 +27,7 @@ const BarContainer = styled.div`
     border-radius: 10px;
     width: 100%;
     height: ${height}px;
+    cursor: pointer;
 `;
     
 const formatTime = (time) => {

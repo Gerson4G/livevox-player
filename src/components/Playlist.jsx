@@ -12,7 +12,7 @@ const Container = styled.div`
     margin-top: 1em;
     position: relative;
 
-    h4 {
+    h3 {
         margin: 2px;
     }
     .playing {
@@ -71,7 +71,7 @@ const ProgressBar = (props) => {
                 </Icon>
                 :
                 <List key={2} className="track-list"s>
-                    <h4>Playlist</h4>
+                    <h3>Playlist</h3>
                     <FontAwesomeIcon className="close" onClick={() => {open(false)}}  icon={faTimes} />
                     {
                         tracks.map( (track, i) => 

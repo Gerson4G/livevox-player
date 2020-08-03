@@ -36,8 +36,8 @@ const Description = (props) => {
         <DescriptionContainer>
             <span onClick={() => open(!isOpen)}>Track info</span>
             <Info isOpen={isOpen}>
-                <div>Song name: {name}</div>
-                <div>Artist: {artist}</div>
+                <div><b>Song name:</b> {name}</div>
+                <div><b>Artist:</b> {artist}</div>
                 <ProgressBar audio={audio} setTime={setTime} duration={duration} currentTime={currentTime}/>
             </Info>
         </DescriptionContainer>
