@@ -2,9 +2,10 @@ import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faForward, faBackward, faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
+import palette from '../constants';
 
 const ButtonsContainer = styled.div`
-    color: black;
+    color: ${palette.action};
     align-self: center;
     display: flex;
     justify-content: center;

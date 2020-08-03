@@ -8,13 +8,14 @@ import { connect } from 'react-refetch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMusic } from '@fortawesome/free-solid-svg-icons'
 import {mock} from '../data.js';
+import palette from '../constants';
 
 const StyledContainer = styled.div`
     font-family: 'Merienda', cursive;
     display: flex;
     margin: auto;
     justify-content: space-between;
-    background-color: white;
+    background-color: #e1e1e1;
     width: 70%;
     height: 6em;
     box-shadow: rgb(101, 101, 101) 0px 30px 80px 0px;
@@ -32,7 +33,7 @@ const StyledContainer = styled.div`
 `;
 
 const Loading = styled.div`
-    
+    color: ${palette.action}
     margin: auto;
     & > * {    
         font-size: 40pt;
@@ -100,7 +101,7 @@ const Container = (props) => {
     return(
         <StyledContainer>
             <div className="left-item">
-                <Disc isPlaying={isPlaying}/>
+                <Disc isPlaying={isPlaying} image={data[selectedTrack]?.image}/>
                 <Playlist selectTrack={selectTrack} selectedTrack={selectedTrack} tracks={data} />
             </div>
             <Description audio={audio} data={data[selectedTrack]} currentTime={currentTime} setTime={setTime}/>

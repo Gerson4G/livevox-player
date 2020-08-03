@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faList, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
 import posed, { PoseGroup } from 'react-pose';
+import palette from '../constants';
 
 const Container = styled.div`
     width: 70%;
@@ -15,13 +16,14 @@ const Container = styled.div`
         margin: 2px;
     }
     .playing {
-        color: blue;
+        color: ${palette.current};
     }
     .icon-open {
         font-size: 30pt;
     }
     .icon-open svg, .close {
         cursor: pointer;
+        color: ${palette.action};
     }
     .track-list .track {
         cursor: pointer;

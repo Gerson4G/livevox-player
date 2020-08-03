@@ -17,6 +17,7 @@ const Bar = styled.div`
 
 const BarContainer = styled.div`
     background: gray;
+    border-radius: 10px;
     width: 100%;
     height: ${height}px;
 `;
