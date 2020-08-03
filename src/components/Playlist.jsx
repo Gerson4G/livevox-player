@@ -7,9 +7,10 @@ import posed, { PoseGroup } from 'react-pose';
 import palette from '../constants';
 
 const Container = styled.div`
+    display: flex;
+    align-items: center;
     width: 70%;
     margin-left: 1em;
-    margin-top: 1em;
     position: relative;
 
     h3 {
@@ -34,7 +35,11 @@ const Container = styled.div`
         position: absolute;
         left: 100%;
         font-size: 15pt;
-        top: 0;
+        top: 1em;
+        transition: all 0.2s ease;
+        &:hover {
+            scale: 1.2;
+        }
     }
 
     .track-list {
@@ -43,6 +48,8 @@ const Container = styled.div`
         white-space: nowrap;
         overflow: hidden;
         background: ${palette.main};
+        max-height: 65%;
+        overflow: hidden auto;
     }
 `;
 

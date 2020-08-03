@@ -23,7 +23,7 @@ const Bar = styled.div`
 `;
 
 const BarContainer = styled.div`
-    background: ${palette.pasive};
+    background: ${palette.lightPasive};
     border-radius: 10px;
     width: 100%;
     height: ${height}px;
@@ -85,7 +85,7 @@ const ProgressBar = (props) => {
                 content={<div>{popoverContent}</div>}
                 contentLocation={popoverPos}
                 disableReposition
-                containerStyle={{background: "rgb(0,0,0,0.6)", padding: "4px 5px", borderRadius: "10px"}}
+                containerStyle={{opacity: "0.8", background: `${palette.lightPasive}`, padding: "4px 5px", borderRadius: "10px"}}
             >
                 <div><BarContainer onMouseMove={showPopover} onMouseLeave={() => openPopover(false)} onMouseOver={showPopover} ref={barElement} onClick={selectTime}><Bar progress={getProgress()}/></BarContainer></div>
             </Popover>

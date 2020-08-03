@@ -14,12 +14,16 @@ const ButtonsContainer = styled.div`
     }
 
     svg {
-      margin: 0 4px;
+      margin: 0 5px;
       font-size: 30pt;
+      transition: all 0.3s ease;
+      &:hover {
+        scale: 1.2;
+      }
     }
 
     .play {
-      font-size: 23pt;
+      font-size: 28pt;
       align-self: center;
     }
 

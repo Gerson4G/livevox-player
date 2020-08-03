@@ -17,7 +17,8 @@ const StyledContainer = styled.div`
     justify-content: space-between;
     background-color: ${palette.main};
     width: 70%;
-    height: 6em;
+    height: 10em;
+    border-radius: 10px;
     box-shadow: rgb(101, 101, 101) 0px 30px 80px 0px;
     padding: 0 15px;
 

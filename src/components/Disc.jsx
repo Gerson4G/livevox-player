@@ -5,13 +5,13 @@ import { faCompactDisc } from '@fortawesome/free-solid-svg-icons'
 import palette from '../constants';
 import { useEffect } from 'react';
 
-const radius = '3em';
+const radius = 7;
+const border = 5;
 
 const StyledDisc = styled.div`
-    border-radius: 3em;
-    background-color: ${palette.pasive};
-    height: ${radius};
-    width: ${radius};
+    border-radius: ${border}em;
+    height: ${radius}em;
+    width: ${radius+6}em;
     align-self: flex-start;
     display: flex;
     align-items: center;
@@ -19,7 +19,7 @@ const StyledDisc = styled.div`
     align-self: center;
 
     img {
-        border-radius: 30px;
+        border-radius: ${border}em;
     }
 
     @keyframes rotating {
@@ -34,7 +34,8 @@ const StyledDisc = styled.div`
     .disc-image, img {
         height: 90%;
         width: auto;
-        ${({isPlaying}) =>isPlaying && 'animation: rotating 4s linear infinite;' }
+        color: ${palette.action};
+        ${({isPlaying}) => isPlaying && 'animation: rotating 4s linear infinite;'}
     }
 `;
 

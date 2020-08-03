@@ -6,14 +6,14 @@ import palette from '../constants';
 const DescriptionContainer = styled.div`
     display: flex;
     align-items: center;
-    span:first-child {
+    & :first-child {
         cursor: pointer;
     }
-
 `;
 
 const Info = styled.div`
     display: block;
+    border-radius: 10px;
     text-align: center;
     background: ${palette.main};
     padding: 10px;
@@ -23,7 +23,7 @@ const Info = styled.div`
     left: 17%;
     visibility: ${({isOpen}) => isOpen ? 'visible' : 'hidden'};
     opacity: ${({isOpen}) => isOpen ? '1' : '0'};
-    transform: ${({isOpen}) => isOpen ? 'translateY(-50%)' : 'translateY(0)'};
+    transform: ${({isOpen}) => isOpen ? 'translateY(-80%)' : 'translateY(0)'};
     ${({isOpen}) => isOpen ? 'transition: visibility 0s linear 0.13s, opacity 0.13s linear, transform 0.13s linear;transition-delay: 0s;' : 'transition: visibility 0s linear 0.13s, opacity 0.13s linear, transform 0.13s linear;'}
     box-shadow: 0px -22px 12px -12px rgb(101, 101, 101);
 `;
@@ -34,7 +34,7 @@ const Description = (props) => {
 
     return(
         <DescriptionContainer>
-            <span onClick={() => open(!isOpen)}>Track info</span>
+            <h2 onClick={() => open(!isOpen)}>Track info</h2>
             <Info isOpen={isOpen}>
                 <div><b>Song name:</b> {name}</div>
                 <div><b>Artist:</b> {artist}</div>
