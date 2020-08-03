@@ -10,6 +10,7 @@ const Container = styled.div`
     margin-left: 1em;
     margin-top: 1em;
     position: relative;
+
     h4 {
         margin: 2px;
     }
@@ -24,16 +25,21 @@ const Container = styled.div`
     }
     .track-list .track {
         cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .close {
         position: absolute;
-        right: 0;
-        font-size: 20pt;
+        left: 100%;
+        font-size: 15pt;
         top: 0;
     }
 
     .track-list {
         height: auto;
+        width: 130%;
+        white-space: nowrap;
+        overflow: hidden;
     }
 `;
 
