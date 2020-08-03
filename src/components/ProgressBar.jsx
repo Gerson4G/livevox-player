@@ -1,7 +1,6 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useState} from 'react';
 import styled from 'styled-components';
 import Popover from 'react-tiny-popover'
-import { useState } from 'react';
 import palette from '../constants';
 
 const height = '10';

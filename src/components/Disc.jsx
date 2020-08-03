@@ -49,7 +49,7 @@ const Disc = ({isPlaying, image}) => {
     return(
         <StyledDisc isPlaying={isPlaying}>
             {   !error ?
-                <img src={image} onError={() => setError(true)}></img> :
+                <img alt="disc cover" src={image} onError={() => setError(true)}></img> :
                 <FontAwesomeIcon className="disc-image" icon={faCompactDisc} />
             }
         </StyledDisc>
