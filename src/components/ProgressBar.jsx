@@ -2,6 +2,7 @@ import React, {useRef, useEffect} from 'react';
 import styled from 'styled-components';
 import Popover from 'react-tiny-popover'
 import { useState } from 'react';
+import palette from '../constants';
 
 const height = '10';
 
@@ -9,14 +10,20 @@ const Container = styled.div``;
 
 const Time = styled.span``;
 
+const TimeContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px; 
+`;
+
 const Bar = styled.div`
     width: ${({progress}) => progress}%;
-    background: blue;
+    background: ${palette.action};
     height: ${height}px;
 `;
 
 const BarContainer = styled.div`
-    background: gray;
+    background: ${palette.pasive};
     border-radius: 10px;
     width: 100%;
     height: ${height}px;
@@ -61,20 +68,23 @@ const ProgressBar = (props) => {
 
     const showPopover = ({nativeEvent: {offsetX}, clientX, clientY}) => {
         setPopoverContent( formatTime(getTime(offsetX, barElement.current.clientWidth)) );
-        setPopooverPos({left: clientX, top: clientY - 30})
+        setPopooverPos({left: clientX, top: clientY - 35})
         openPopover(true)
     }
 
     return(
         <Container>
-            <Time>{formatTime(currentTime)}</Time>
-            <Time>{formatTime(duration)}</Time>
+            <TimeContainer>
+                <Time>{formatTime(currentTime)}</Time>
+                <Time>{formatTime(duration)}</Time>
+            </TimeContainer>
             <Popover
                 isOpen={isPopoverOpen}
                 position={'top'}
                 content={<div>{popoverContent}</div>}
                 contentLocation={popoverPos}
                 disableReposition
+                containerStyle={{background: "rgb(0,0,0,0.6)", padding: "4px 5px", borderRadius: "10px"}}
             >
                 <div><BarContainer onMouseMove={showPopover} onMouseLeave={() => openPopover(false)} onMouseOver={showPopover} ref={barElement} onClick={selectTime}><Bar progress={getProgress()}/></BarContainer></div>
             </Popover>
